@@ -1,0 +1,16 @@
+#include <stdio.h>
+
+int main(void)
+{
+int a = 5;
+int b = 6;
+int c = a/b;
+int d = b/a;
+int e = (a + b) / 10;
+int f = (a + b) % 10;
+double x = (a + b) / 10;
+double y = (a + b) / 10.0;
+printf ("a=%d, b=%d, c=%d, d=%d, e=%d, f=%d, x=%lf, y=%lf\n",
+        a, b, c, d, e, f, x, y);
+ return 0;
+}

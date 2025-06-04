@@ -1,0 +1,81 @@
+
+
+
+
+
+
+#include <MyroC.h>
+#include <stdio.h>
+#include "scale-notes.h"
+
+void
+tune_forward (void)
+{
+  printf ("tune_forward \n") ;
+  rBeep(1.0, pitchC5);
+  rBeep(0.5, pitchDf5);
+  rBeep(0.5, pitchCs5);
+  rBeep(0.5, pitchD5);
+  rBeep(0.5, pitchEf5);
+  rBeep(0.5, pitchDs5);  
+}
+
+void
+tune_backward (void)
+{
+  printf ("tune_backward \n") ;
+  rBeep(0.5, pitchDs5);
+  rBeep(0.5, pitchEf5);
+  rBeep(0.5, pitchD5);
+  rBeep(0.5, pitchCs5);
+  rBeep(0.5, pitchDf5);
+  rBeep(1.0, pitchC5);
+}
+
+void move_clockwise (void)
+{
+  printf ("Move_clockwise \n") ;
+  rForward(1.0, 0.5);
+  rTurnRight(1.0,1.0);
+  rForward(1.0, 0.5);
+  rForward(1.0, 0.5);
+  rTurnRight(1.0,1.0);
+  rTurnRight(1.0,1.0);
+}
+
+void move_counterclockwise (void)
+{
+  printf ("Move_counterclockwise \n") ;
+  rForward(1.0, 0.5);
+  rTurnLeft(1.0,1.0);
+  rForward(1.0, 0.5);
+  rForward(1.0, 0.5);
+  rTurnLeft(1.0,1.0);
+  rTurnLeft(1.0,1.0);
+}
+
+int main (void)
+{
+  rConnect ("/dev/rfcomm0");
+  
+  printf("Starting tune_forward\n");
+  tune_forward ();
+
+  printf("Starting move_clockwise\n");
+  move_clockwise ();
+  
+  printf("Starting tune_backward\n");
+  tune_backward ();
+
+  printf("Starting move_counterclockwise\n");
+  move_counterclockwise ();
+
+  printf("Starting tune_forward\n");
+  tune_forward ();
+  
+  printf("Starting move_clockwise\n");
+  move_clockwise ();
+
+  rDisconnect ();
+  
+    return 0; }

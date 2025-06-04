@@ -1,0 +1,31 @@
+#include <stdlib.h>
+#include <stdio.h>
+
+struct sequence {
+  int value;
+  int position;
+
+         sequence * next;
+}
+
+int
+main(void)
+
+{
+  struct * sequence fibb = {0,1};
+  int end;
+  printf("please input which position in the fibonacci sequence you want");
+  scanf(%d, &end)
+    if (end == 0)
+      {return 0}
+    else
+      {
+    while (fibb->position != end)
+      {
+
+
+
+           }
+      }
+
+  return 0}

@@ -1,0 +1,36 @@
+
+
+
+
+
+
+1. A. Input does not require the '&' symbol in the scanf function because
+the variable ias already the address that is being scanned to, whereas
+number is the value stored at the location.
+B.It still runs, because digits are characters and can be stored within a
+string.
+C. the result is "Down" beccause it read until the first whitespace and
+then stopped reading.
+D. Does not work. The variable 'number' is a double, and cannot be assigned
+a string.
+3. 1a. tests 1 and 2: program works as expected, and stores the correct
+values in a and b
+test 3: splits the two numbers by the deimal point since there is no
+whitespace
+1b. Tests 1 and 2: works exactly the same as the code in 1a.
+Test 3: Reads 1.5 and -2.5 because it reads the dash as not a number and
+stops reading as if it were a whitespace, but adds the dash back into he
+reading buffer
+2. Test 1: The program works as expected because the scanf function
+included the '-' character between inputs, which means it did not read '-'
+as a negative.
+   Test 2: The program stopped reading at ' because it is not considered a
+   number. The program then puts ' back into the reading buffer. Therefore,
+   when the program reads the second number, it stops immediately.
+3. Test 1: The prgram stopped reading at '-' because it is not considered a
+number.
+   Test 2: The program works as expected because the scanf function
+   included the ' character.
+   Test 3: The program did not work because it stopped reading at the white
+   space, rather than using the parenthesis to stop.
+   Test 4: 

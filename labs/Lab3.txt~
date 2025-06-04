@@ -1,0 +1,13 @@
+
+
+
+1. a. It is declared as double precip[days][cities], and initialized as an
+array of [days] arrays with [cities] entries.
+b.they are referenced by precip[specific day][specific city]. They use a double for loop to run each permutation of day and city, and
+print each out in sequence, row by row.
+c.it is passed as the full declaration of precip
+d. it is specified using the actual size of the
+array[num_days][num_cities]. The number of rows could be omitted, but the
+number of columns could not.
+e. it is a for loop by day, adds all of the values for rainfall. this
+function is passed in a for loop, so it runs for each city.

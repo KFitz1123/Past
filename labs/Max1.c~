@@ -1,0 +1,15 @@
+
+
+
+int
+maxf (int x, int y)
+{
+  return x > y ? x : y;
+} // maxf
+
+int
+main(void)
+{
+  printf("%d", maxf(7,11));
+  return 0;
+}

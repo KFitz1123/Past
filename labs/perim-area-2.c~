@@ -1,0 +1,38 @@
+/* program to compute the perimeter and area of a rectangle */
+
+#include <stdio.h>
+
+/* compute the perimeter and area of a rectangle, 
+   given the lengths of the two sides */
+void
+compute (double side1, double side2, double * pPerimeter, double * pArea)
+{
+  double lengthPlusWidth = side1 + side2;
+  *pPerimeter = 2.0 * lengthPlusWidth;
+  *pArea = side1 * side2;
+} // compute
+
+
+/* demonstrate pointer passing by calling compute and displaying results */
+int
+main (void)
+{
+  /* declare variables */
+  double length = 5.0;
+  double width  = 7.0;
+  double perimeter;
+  double area;
+
+  /* print header */
+  printf ("working with a rectangle of width %lf and length %lf\n",
+          width, length);
+ 
+  /* compute desired quantities */
+  compute (length, width, &perimeter, &area);
+
+  /* print results */
+  printf ("the rectangle's perimeter is %lf\n", perimeter);
+  printf ("the rectangle's area is %lf\n", area);
+
+  return 0;
+} // main

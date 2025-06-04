@@ -1,0 +1,37 @@
+/* windchill.c
+ *
+ * Author: Barbara Z. Johnson and (your names here)
+ * Date: June 20, 2022
+ * Revised: (today's date)
+ * Purpose: to calculate the windchill based on two inputs:
+ *		temperature (Fahrenheit) assumed to be an integer
+ *      windspeed (miles per hour) assumed to be an integer
+ *		forumula:  Twc = F - (W * 0.7)
+ *      forumula from  Tom Skilling at the Chicago Tribune
+ */
+ 
+#include <stdio.h>
+
+int main() {
+
+	int temp = 0;
+	int windspeed = 0;
+
+	// tell user what to expect
+	printf("This program will calculate the windchill based on still air temperature");
+	printf(" and wind speed using a simplified calculation.\n");
+	
+	
+	// prompt user for inputs, which are assumed to be two integers with no errors from the user
+	printf("What is the temperature in Fahrenheit (whole number only)? \n");
+	scanf("%d", &temp);
+	
+	printf("What is the wind speed in miles per hour (whole number only)\n");
+	scanf("%d", &windspeed);
+	
+	// ADD your code here!
+
+
+	return 0;
+
+}

@@ -1,0 +1,10 @@
+#define SQUARE(X) X*X
+#include <stdio.h>
+
+int
+main(void)
+{
+
+  printf("%d" SQUARE(5)
+  return 0;
+}

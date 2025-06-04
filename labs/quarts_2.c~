@@ -1,0 +1,32 @@
+/* A simple program to convert a number of quarts to liters
+ * Version 1:  global variables only
+ * Author: Henry Walker 
+*/
+
+#include <stdio.h>                    /* reference to standard I/O library */
+
+int
+main (void)                           /* beginning of main program */
+{ 
+    int quarts;                       /* variable declarations */
+    double liters;                    /* double = real */
+    
+    printf ("Table of quart and liter equivalents\n");  
+                                      /* write opening statement */
+    for (quarts = 0;quarts <= 12; quarts++)    
+      {
+    liters = quarts / 1.056710;      
+    printf ("%4d%16.4lf\n", quarts, liters);
+      }
+
+     printf ("Table of quart and liter equivalents\n");  
+    quarts =0;
+    while (quarts <= 12)
+      {
+        printf ("%4d%16.4lf\n", quarts, liters);
+        quarts++;
+      }
+                                  
+
+    return 0;                         /* the program ran without errors */
+} // main

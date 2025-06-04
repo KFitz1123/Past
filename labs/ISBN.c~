@@ -1,0 +1,21 @@
+#include <stdio.h>
+
+int
+main(void)
+{
+  int num=0;
+  int total=0;
+  int input=0;
+
+  for(x=1,x<10,x++);
+  {scanf("%c",&input);
+    num= input - '0';
+    printf("%d",num);
+    total= total + (x * input);
+    }
+
+  
+  num= total % 11;
+  printf("%d" num);
+  return 0;
+}
