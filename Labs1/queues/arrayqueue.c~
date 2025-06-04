@@ -1,0 +1,28 @@
+#inlude "arrayqueue.h"
+#include <stdio.h>
+#include <stdlib.h>
+#include <stdbool.h>
+
+
+
+
+
+void
+initialize (stringQueue * queue);
+
+bool
+isEmpty (const stringQueue * queue);
+
+bool
+isFull (const stringQueue * queue);
+
+bool
+enqueue (stringQueue * queue, char * item);
+/* returns whether item was successfully enqueued */
+
+char *
+dequeue (stringQueue * queue);
+/* returns string removed from queue */
+
+char *
+front (const stringQueue* queue);

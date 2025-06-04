@@ -1,0 +1,27 @@
+
+
+
+
+
+
+
+
+Third: Third.o arrayqueue.o
+	clang -o Third Third.o arrayqueue.o
+
+Third.o: Third.c arrayqueue.h
+	clang -c Third.c
+
+arrayqueue.o: arrayqueue.c arrayqueue.h
+	clang -c arrayqueue.c
+
+
+
+listThird: listThird.o listStack.o
+	clang -o listThird listThird.o listStack.o
+
+listThird.o: listThird.c listStack.h
+	clang -c listThird.c
+
+listStack.o: listStack.c listStack.h
+	clang -c listStack.c

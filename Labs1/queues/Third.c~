@@ -1,0 +1,25 @@
+#include "arrayqueue.h"
+
+
+
+
+int main(void){
+
+  stringQueue ADT;
+  initialize(ADT);
+  enqueue(ADT, "A");
+  front(ADT); // A
+  enqueue(ADT, "B");
+  front(ADT); // B
+  dequeue(ADT);
+  front(ADT); // A
+
+
+
+
+
+
+
+
+  return 0;
+}
