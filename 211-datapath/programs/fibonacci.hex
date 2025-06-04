@@ -1,0 +1,173 @@
+v2.0 raw
+# This is an automatically-generated PIPS machine code file
+
+# 0x0000: nop
+06006000 
+
+# 0x0004: li   $sp, STACK_TOP
+0e01f800 
+
+# 0x0008: li   $s0, TERMINAL              # Load the terminal
+0a01ff10 
+
+# 0x000c: li   $a0, 1
+02010001 
+
+# 0x0010: li   $a1, 0                     # Load a1 and a0
+03010000 
+
+# 0x0014: jal  fibonacci                  # Run the fibonacci sequence
+ff0300c0 
+
+# 0x0018: j    HALT                       # Stop execution
+f001ff00 
+
+# 0x001c: push $ra                        # Store ra and a0
+0ee1fffe cfe10000 
+
+# 0x0024: push $a0
+0ee1fffe c2e10000 
+
+# 0x002c: li   $t0, 10                    # t0= 10
+0601000a 
+
+# 0x0030: slt  $t2, $t0, $a0              # t2=10<n !t2=10>=n
+78602000 
+
+# 0x0034: pop  $t0                        # pop a0
+a6e10000 0ee10002 
+
+# 0x003c: beq  $t2, $zero, base           # t2==1 recurse
+d8010078 
+
+# 0x0040: push $t0                        # push a0
+0ee1fffe c6e10000 
+
+# 0x0048: addi $a1, $zero, 10             # $a1 = 10
+0301000a 
+
+# 0x004c: jal  remainder                  # get remainder
+ff0300a4 
+
+# 0x0050: pop  $a0                        # Retrieve a0
+a2e10000 0ee10002 
+
+# 0x0058: push $v0                        # Store remainder
+0ee1fffe c1e10000 
+
+# 0x0060: li   $a1, 10                    # set a1 to 10
+0301000a 
+
+# 0x0064: jal  quotient
+ff03008c 
+
+# 0x0068: addi $a0, $v0, 0                # a0 = n / 10
+02110000 
+
+# 0x006c: jal  print_num                  #recurse
+ff03001c 
+
+# 0x0070: pop  $t0                        # Get remainder
+a6e10000 0ee10002 
+
+# 0x0078: addi $t0, $t0, 0x30             # Load ASCII value to $t0
+06610030 
+
+# 0x007c: sb   $t0, 0($s0)                # Print
+b6a10000 
+
+# 0x0080: pop  $ra                        # Get return
+afe10000 0ee10002 
+
+# 0x0088: jr   $ra
+f000f000 
+
+# 0x008c: addi $v0, $zero, 0              # Set v0 to 0
+01010000 
+
+# 0x0090: slt  $t1, $a0, $a1		# branch out if b>=a
+77203000 
+
+# 0x0094: bne $t1, $zero, out2
+e70100bc 
+
+# 0x0098: sub  $a0, $a0, $a1		# a0 = a0 - a1
+12203000 
+
+# 0x009c: addi $v0,$v0,1                  # Increment v0
+01110001 
+
+# 0x00a0: j    quoloop			# loop
+f0010090 
+
+# 0x00a4: slt  $t1, $a0, $a1		# branch out if b>=a
+77203000 
+
+# 0x00a8: bne  $t1, $zero, out
+e70100b4 
+
+# 0x00ac: sub  $a0, $a0, $a1		# a0 = a0 - a1
+12203000 
+
+# 0x00b0: j    remainder			# loopout:
+f00100a4 
+
+# 0x00b4: addi $v0, $a0, 0                # Move a0 to v0
+01210000 
+
+# 0x00b8: jr   $ra                        # Return to caller
+f000f000 
+
+# 0x00bc: jr $ra                          # Return
+f000f000 
+
+# 0x00c0: push $s2                        # Store s2,s1, and ra
+0ee1fffe cce10000 
+
+# 0x00c8: push $s1
+0ee1fffe cbe10000 
+
+# 0x00d0: push $ra
+0ee1fffe cfe10000 
+
+# 0x00d8: add  $s2, $a0, $zero            # s2=a0
+0c200000 
+
+# 0x00dc: add  $s1, $a1, $zero            # s1=a1
+0b300000 
+
+# 0x00e0: jal  print_num                  # Print a1
+ff03001c 
+
+# 0x00e4: li   $t0, 0x0a                  # Load ASCII value for newline
+0601000a 
+
+# 0x00e8: sb   $t0, 0($s0)                # Print newline
+b6a10000 
+
+# 0x00ec: add  $a1, $s2, $zero            # a1=first input this recursion
+03c00000 
+
+# 0x00f0: add  $a0, $s2, $s1              # a0=sum of the inputs
+02c0b000 
+
+# 0x00f4: addi $t0, $zero, END            # Set up the check if we're done
+060103db 
+
+# 0x00f8: beq  $t0, $a0, done             # Check if we're done
+d6210100 
+
+# 0x00fc: jal  fibonacci                  # Recurse if not done
+ff0300c0 
+
+# 0x0100: pop  $ra                        # Retrieve s2,s1 and ra
+afe10000 0ee10002 
+
+# 0x0108: pop  $s1
+abe10000 0ee10002 
+
+# 0x0110: pop  $s2
+ace10000 0ee10002 
+
+# 0x0118: jr   $ra                        # Return
+f000f000 

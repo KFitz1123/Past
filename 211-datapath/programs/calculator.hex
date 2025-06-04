@@ -1,0 +1,200 @@
+v2.0 raw
+# This is an automatically-generated PIPS machine code file
+
+# 0x0000: nop
+06006000 
+
+# 0x0004: li   $s0, TERM       # Address of the terminal output for memory-mapped I/O
+0a01ff10 
+
+# 0x0008: li   $s1, KBD        # Address of the keyboard input for memory-mapped I/O
+0b01ff20 
+
+# 0x000c: li   $sp, STACK_TOP  # Predefined initial stack address
+0e01f800 
+
+# 0x0010: lb  $t0, 0($s1)           # Load a character from the keyboard
+96b10000 
+
+# 0x0014: beq $t0, $zero, loop_top  # If it is the null terminator, start over
+d6010010 
+
+# 0x0018: li  $t1, '\n'             # Load a newline constant
+0701000a 
+
+# 0x001c: beq $t0, $t1, end         # If the character was the newline, stop looping
+d6710090 
+
+# 0x0020: push $t0
+0ee1fffe c6e10000 
+
+# 0x0028: lb  $t0, 0($s1)           # Load a character from the keyboard
+96b10000 
+
+# 0x002c: beq $t0, $zero, pause1    # If it is the null terminator, start over
+d6010028 
+
+# 0x0030: li  $t1, '\n'             # Load a newline constant
+0701000a 
+
+# 0x0034: beq $t0, $t1, end         # If the character was the newline, stop looping
+d6710090 
+
+# 0x0038: push $t0
+0ee1fffe c6e10000 
+
+# 0x0040: lb  $t0, 0($s1)           # Load a character from the keyboard
+96b10000 
+
+# 0x0044: beq $t0, $zero, pause2    # If it is the null terminator, start over
+d6010040 
+
+# 0x0048: li  $t1, '\n'             # Load a newline constant
+0701000a 
+
+# 0x004c: beq $t0, $t1, end         # If the character was the newline, stop looping
+d6710090 
+
+# 0x0050: pop $t1
+a7e10000 0ee10002 
+
+# 0x0058: pop $t1
+a7e10000 0ee10002 
+
+# 0x0060: sb  $t1, 0($s0)           # Write the character to the terminal
+b7a10000 
+
+# 0x0064: li  $t2, 43               # Write '+' to the terminal
+0801002b 
+
+# 0x0068: sb  $t2, 0($s0)           # Write the character to the terminal
+b8a10000 
+
+# 0x006c: sb  $t0, 0($s0)           # Write the character to the terminal
+b6a10000 
+
+# 0x0070: li  $t2, '\n'             # Load a newline constant
+0801000a 
+
+# 0x0074: sb  $t2, 0($s0)           # Write the character to the terminal
+b8a10000 
+
+# 0x0078: add $a0, $t1, $t0
+02706000 
+
+# 0x007c: addi $a0, $a0, -96
+0221ffa0 
+
+# 0x0080: jal print_num
+ff030094 
+
+# 0x0084: li  $t2, '\n'             # Load a newline constant
+0801000a 
+
+# 0x0088: sb  $t2, 0($s0)           # Write the character to the terminal
+b8a10000 
+
+# 0x008c: j   loop_top              # Start over
+f0010010 
+
+# 0x0090: j   HALT                  # Enable halt pin and stop the PC incrementing
+f001ff00 
+
+# 0x0094: push $ra                        # Store ra and a0
+0ee1fffe cfe10000 
+
+# 0x009c: push $a0
+0ee1fffe c2e10000 
+
+# 0x00a4: li   $t0, 10                    # t0= 10
+0601000a 
+
+# 0x00a8: slt  $t2, $t0, $a0              # t2=10<n !t2=10>=n
+78602000 
+
+# 0x00ac: pop  $t0                        # pop a0
+a6e10000 0ee10002 
+
+# 0x00b4: beq  $t2, $zero, base           # t2==1 recurse
+d80100f0 
+
+# 0x00b8: push $t0                        # push a0
+0ee1fffe c6e10000 
+
+# 0x00c0: addi $a1, $zero, 10             # $a1 = 10
+0301000a 
+
+# 0x00c4: jal  remainder                  # get remainder
+ff03011c 
+
+# 0x00c8: pop  $a0                        # Retrieve a0
+a2e10000 0ee10002 
+
+# 0x00d0: push $v0                        # Store remainder
+0ee1fffe c1e10000 
+
+# 0x00d8: li   $a1, 10                    # set a1 to 10
+0301000a 
+
+# 0x00dc: jal  quotient
+ff030104 
+
+# 0x00e0: addi $a0, $v0, 0                # a0 = n / 10
+02110000 
+
+# 0x00e4: jal  print_num                  #recurse
+ff030094 
+
+# 0x00e8: pop  $t0                        # Get remainder
+a6e10000 0ee10002 
+
+# 0x00f0: addi $t0, $t0, 0x30             # Load ASCII value to $t0
+06610030 
+
+# 0x00f4: sb   $t0, 0($s0)                # Print
+b6a10000 
+
+# 0x00f8: pop  $ra                        # Get return
+afe10000 0ee10002 
+
+# 0x0100: jr   $ra
+f000f000 
+
+# 0x0104: addi $v0, $zero, 0              # Set v0 to 0
+01010000 
+
+# 0x0108: slt  $t1, $a0, $a1		# branch out if b>=a
+77203000 
+
+# 0x010c: bne $t1, $zero, out2
+e7010134 
+
+# 0x0110: sub  $a0, $a0, $a1		# a0 = a0 - a1
+12203000 
+
+# 0x0114: addi $v0,$v0,1                  # Increment v0
+01110001 
+
+# 0x0118: j    quoloop			# loop
+f0010108 
+
+# 0x011c: slt  $t1, $a0, $a1		# branch out if b>=a
+77203000 
+
+# 0x0120: bne  $t1, $zero, out
+e701012c 
+
+# 0x0124: sub  $a0, $a0, $a1		# a0 = a0 - a1
+12203000 
+
+# 0x0128: j    remainder			# loopout:
+f001011c 
+
+# 0x012c: addi $v0, $a0, 0                # Move a0 to v0
+01210000 
+
+# 0x0130: jr   $ra                        # Return to caller
+f000f000 
+
+# 0x0134: jr $ra                          # Return
+f000f000 

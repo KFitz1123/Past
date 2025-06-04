@@ -1,0 +1,131 @@
+v2.0 raw
+# This is an automatically-generated PIPS machine code file
+
+# 0x0000: nop
+06006000 
+
+# 0x0004: li   $sp, 0xf800          #init stack
+0e01f800 
+
+# 0x0008: li   $a0, 32
+02010020 
+
+# 0x000c: li   $a1, 48
+03010030 
+
+# 0x0010: li   $t0, 0xABCD
+0601abcd 
+
+# 0x0014: sw $a0, 0($sp)
+c2e10000 
+
+# 0x0018: lw $s0, 0($sp)          # s0 = 32
+aae10000 
+
+# 0x001c: sb $t0, 0($sp)
+b6e10000 
+
+# 0x0020: lb $s1, 0($sp)          #s1 = 00CD
+9be10000 
+
+# 0x0024: sw $a1, -4($sp)
+c3e1fffc 
+
+# 0x0028: lw $s2, -4($sp)         #s2 = 48
+ace1fffc 
+
+# 0x002c: sb $t0, 1($sp)
+b6e10001 
+
+# 0x0030: lw $s3, 1($sp)          #s3 = CD
+ade10001 
+
+# 0x0034: jal  gcd
+ff030050 
+
+# 0x0038: addi $s3, $v0, 0          #store result of gcd $s3 == 16
+0d110000 
+
+# 0x003c: li   $a0, 5
+02010005 
+
+# 0x0040: li   $a1, 2
+03010002 
+
+# 0x0044: jal  gcd
+ff030050 
+
+# 0x0048: addi $s2, $v0, 0          #store result of gcd $s3 == 16
+0c110000 
+
+# 0x004c: j end
+f00100ac 
+
+# 0x0050: bne $a1, $zero, recursivecase	# branch if m is 0
+e3010068 
+
+# 0x0054: addi $v0, $a0, 0		# return $a0
+01210000 
+
+# 0x0058: lw   $a1, 0($sp)		# pop $a1
+a3e10000 
+
+# 0x005c: lw   $ra, 4($sp)		# pop $s1
+afe10004 
+
+# 0x0060: addi $sp, $sp, 8		# restore stack
+0ee10008 
+
+# 0x0064: jr   $ra                      # Return to caller
+f000f000 
+
+# 0x0068: addi $sp, $sp, -8		# make space in the stack
+0ee1fff8 
+
+# 0x006c: sw   $a1, 0($sp)		# push $a1
+c3e10000 
+
+# 0x0070: sw   $ra, 4($sp)		# push $ra
+cfe10004 
+
+# 0x0074: jal  remainder		# call remainder
+ff030094 
+
+# 0x0078: addi $a1, $v0, 0			# n = remainder(m,n)
+03110000 
+
+# 0x007c: lw   $a0, 0($sp)		# m = prev n
+a2e10000 
+
+# 0x0080: jal  gcd			# recursive call
+ff030050 
+
+# 0x0084: lw   $a1, 0($sp)		# pop $a1
+a3e10000 
+
+# 0x0088: lw   $ra, 4($sp)		# pop $ra
+afe10004 
+
+# 0x008c: addi $sp, $sp, 8		# restore stack
+0ee10008 
+
+# 0x0090: jr   $ra                      # Return to caller
+f000f000 
+
+# 0x0094: slt  $t1, $a0, $a1		# branch out if b>=a
+77203000 
+
+# 0x0098: bne $t1, $zero, out
+e70100a4 
+
+# 0x009c: sub  $a0, $a0, $a1		# a0 = a0 - a1
+12203000 
+
+# 0x00a0: j    remainder			# loop
+f0010094 
+
+# 0x00a4: addi $v0, $a0, 0
+01210000 
+
+# 0x00a8: jr   $ra                        # Return to caller
+f000f000 

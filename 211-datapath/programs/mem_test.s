@@ -1,0 +1,89 @@
+test_start:
+        nop
+        li   $sp, 0xf800          #init stack
+        li   $a0, 32
+        li   $a1, 48
+        li   $t0, 0xABCD
+        
+        sw $a0, 0($sp)
+        lw $s0, 0($sp)          # s0 = 32
+        sb $t0, 0($sp)
+        lb $s1, 0($sp)          #s1 = 00CD
+        
+        sw $a1, -4($sp)
+        lw $s2, -4($sp)         #s2 = 48
+        sb $t0, 1($sp)
+        lw $s3, 1($sp)          #s3 = CD
+        
+        jal  gcd
+        addi $s3, $v0, 0          #store result of gcd $s3 == 16
+        
+        li   $a0, 5
+        li   $a1, 2
+        jal  gcd
+        addi $s2, $v0, 0          #store result of gcd $s3 == 16 
+
+
+
+        
+        j end
+
+        
+gcd:
+
+  bne $a1, $zero, recursivecase	# branch if m is 0
+
+  addi $v0, $a0, 0		# return $a0
+
+  lw   $a1, 0($sp)		# pop $a1
+
+  lw   $ra, 4($sp)		# pop $s1
+
+  addi $sp, $sp, 8		# restore stack
+
+  jr   $ra                      # Return to caller
+
+recursivecase:
+
+  addi $sp, $sp, -8		# make space in the stack 
+
+  sw   $a1, 0($sp)		# push $a1
+
+  sw   $ra, 4($sp)		# push $ra
+
+  jal  remainder		# call remainder
+
+  addi $a1, $v0, 0			# n = remainder(m,n)
+
+  lw   $a0, 0($sp)		# m = prev n
+
+  jal  gcd			# recursive call
+
+  lw   $a1, 0($sp)		# pop $a1
+
+  lw   $ra, 4($sp)		# pop $ra
+
+  addi $sp, $sp, 8		# restore stack
+
+  jr   $ra                      # Return to caller
+        
+        
+
+
+remainder:
+
+  slt  $t1, $a0, $a1		# branch out if b>=a
+
+  bne $t1, $zero, out			
+
+  sub  $a0, $a0, $a1		# a0 = a0 - a1
+
+  j    remainder			# loop
+
+out: 
+
+  addi $v0, $a0, 0
+
+  jr   $ra                        # Return to caller
+
+end:    

@@ -1,0 +1,7 @@
+# This is a simple program that tests the implementation of your li and add instructions.
+add_test:
+  li   $s0, 3          # Load a 3 into $s0
+  add  $s1, $s0, $s0  # Store $s0 + $s0 into $s1 == 6
+  addi $s2, $s1, 8    # Store $s1 + 8 to $s2 (14/e)
+  subi $s3, $s2, 10   # store $s2 - 10 to $s3 (4)
+  sub  $t0, $s3, $s0  # Store $s3 - $s0 in $t0 (1)

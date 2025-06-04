@@ -1,0 +1,27 @@
+jump_test:
+        nop
+        li  $s0,  1         #s0=1
+        li  $s1,  5         #s1=5
+        li  $s2,  1         #s2 = 1
+        jal func            #Go to func
+        j   next            #Start again
+
+func:
+        add $t0, $t0, $s0   #Add 1 to t0
+        jr  $ra             #Return
+next:
+        beq $s0, $s2, success
+        li  $t0, -1
+success:
+        li  $t2, 3
+        bne $s0, $s1, success2
+        li  $t0, -1
+success2:
+        addi $t2,$t2, 1
+        beq $s0, $s1, fail      # here $t0 should be not -1
+        addi $t2,$t2, 2
+        bne $s0, $s2, fail
+        li  $t1, 16
+                                
+fail:
+       li  $t0, -1              # here $t1 should be 16

@@ -1,0 +1,100 @@
+.constant HALT 0xff00
+
+shift_test:
+        
+        nop
+        
+        li  $t0, 0xFFF3
+        li  $t1, 0x0123
+        push $t1                # Load t1 onto the stack 
+        addi $t1, $t1, 500      # Modify t1
+        pop $t1                 # Restore t1 from the stack
+        sll $t3, $t1, 4         # t3 == 0x1230
+        sll $t3, $t0, 4         # t3 == 0xFF30
+        
+        srl $t3, $t1, 4         # t3 == 0x0012
+        srl $t3, $t0, 4         # t3 == 0x0FFF
+        
+        sra $t3, $t1, 4         # t3 == 0x0012
+        sra $t3, $t0, 4         # t3 == 0xFFFF
+        not $t3, $t3            # Set t3 to 0x0000
+        not $t3, $t1            # Set t3 to 0xFEDC
+        j   HALT
+
+        
+        li $t0, 1
+        li $t1, 1
+        li $t3, 2
+        
+        blt! $t0, $t1, fail
+        li  $t0, 1
+        
+        blt! $t3, $t0, fail
+        li  $t3, 2
+        
+        bgt! $t0, $t1, fail
+        li  $t0, 1
+        
+        bgt! $t0, $t3, fail
+        li  $t0, 1
+
+        bge! $t0, $t3, fail
+        li  $t0, 1
+
+        ble! $t3, $t0, fail
+        li  $t3, 2
+
+        blt! $t0, $t3, good1
+        j fail
+good1:
+        li  $t0, 1
+        bgt! $t3, $t0, good2
+        j fail
+good2:
+        li  $t3, 2
+        ble! $t0, $t1, good3
+        j fail
+good3:
+        li  $t0, 1
+        bge! $t0, $t1, good4
+        j fail
+good4:
+        li  $t0, 1
+        ble! $t0, $t3, good5
+        j fail
+good5:
+        li  $t0, 1
+        bge! $t3, $t1, good6
+        j fail
+good6:
+        li  $t3, 420
+        
+        
+
+
+
+        
+
+        
+        li  $t0, 0xFFF3
+        li  $t1, 0x0123
+        push $t1                # Load t1 onto the stack 
+        addi $t1, $t1, 500      # Modify t1
+        pop $t1                 # Restore t1 from the stack
+        sll $t3, $t1, 4         # t3 == 0x1230
+        sll $t3, $t0, 4         # t3 == 0xFF30
+        
+        srl $t3, $t1, 4         # t3 == 0x0012
+        srl $t3, $t0, 4         # t3 == 0x0FFF
+        
+        sra $t3, $t1, 4         # t3 == 0x0012
+        sra $t3, $t0, 4         # t3 == 0xFFFF
+        not $t3, $t3            # Set t3 to 0x0000
+        not $t3, $t1            # Set t3 to 0xFEDC
+        j   HALT
+
+ 
+
+fail:
+        li $t3, -1
+        j HALT

@@ -1,0 +1,59 @@
+v2.0 raw
+# This is an automatically-generated PIPS machine code file
+
+# 0x0000: nop
+06006000 
+
+# 0x0004: li  $s0,  1             #s0=1
+0a010001 
+
+# 0x0008: li  $s1,  5             #s1=5
+0b010005 
+
+# 0x000c: li  $s2,  1             #s2 = 1
+0c010001 
+
+# 0x0010: jal func                #Go to func
+ff030018 
+
+# 0x0014: j   next                #Start again
+f0010020 
+
+# 0x0018: add $t0, $t0, $s0       #Add 1 to t0
+0660a000 
+
+# 0x001c: jr  $ra                 #Return
+f000f000 
+
+# 0x0020: beq $s0, $s2, success   # expect to branch to success
+dac10028 
+
+# 0x0024: li  $t0, -1             # if the command fails, set $t0 to -1
+0601ffff 
+
+# 0x0028: li  $t2, 3              # if beq succeeds, set $t2 to 3
+08010003 
+
+# 0x002c: bne $s0, $s1, success2  # expect to branch to success2
+eab10034 
+
+# 0x0030: li  $t0, -1              # if the command fails, set $t0 to -1
+0601ffff 
+
+# 0x0034: addi $t2,$t2, 1         # if bne succeeds, set $t2 to 4
+08810001 
+
+# 0x0038: beq $s0, $s1, fail      # here $t0 should be not -1
+dab10048 
+
+# 0x003c: addi $t2,$t2, 2         # if beq fails successfully, set $t2 to 6
+08810002 
+
+# 0x0040: bne $s0, $s2, fail      # expect no  branch
+eac10048 
+
+# 0x0044: li  $t1, 16             # if bne fails successfully, set $t1 to 16
+07010010 
+
+# 0x0048: li  $t0, -1              # here $t1 should be 16, $t2 = 6, $t0 = FFFFFF
+0601ffff 

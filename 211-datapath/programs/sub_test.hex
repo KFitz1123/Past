@@ -1,0 +1,83 @@
+v2.0 raw
+# This is an automatically-generated PIPS machine code file
+
+# 0x0000: li   $s0, 3          # Load a 3 into $s0
+0a010003 
+
+# 0x0004: add  $s1, $s0, $s0  # Store $s0 + $s0 into $s1 == 6
+0ba0a000 
+
+# 0x0008: addi $s2, $s1, 8    # Store $s1 + 8 to $s2 (14/e)
+0cb10008 
+
+# 0x000c: subi $s3, $s2, 10   # store $s2 - 10 to $s3 (4)
+1dc1000a 
+
+# 0x0010: sub  $t0, $s3, $s0  # Store $s3 - $s0 in $t0 (1)
+16d0a000 
+
+# 0x0014: nop
+06006000 
+
+# 0x0018: nop
+06006000 
+
+# 0x001c: li   $s1, 3
+0b010003 
+
+# 0x0020: li   $s0, 5
+0a010005 
+
+# 0x0024: and  $s2, $s1, $s0  #and s0 and s1, s2 == 1
+2cb0a000 
+
+# 0x0028: andi $s3, $s0, 12   #and s0 and 12, s3 == 4
+2da1000c 
+
+# 0x002c: or   $s2, $s1, $s0 #or s0 and s1, s2 == 7
+3cb0a000 
+
+# 0x0030: ori  $s3, $s0, 12  #or s0 and 12, s3 == 13/d
+3da1000c 
+
+# 0x0034: nand  $s2, $s1, $s0 #nand s0 and s1, s2 == 0xFFFe
+4cb0a000 
+
+# 0x0038: nandi $s3, $s0, 12  #nand s0 and 12, s3 == 0xFFFb
+4da1000c 
+
+# 0x003c: nor  $s2, $s1, $s0 #nor s0 and s1, s2 == 0xFFF8
+5cb0a000 
+
+# 0x0040: nori $s3, $s0, 12  #nor s0 and 12, s3 == 0xFFF2
+5da1000c 
+
+# 0x0044: xor  $s2, $s1, $s0 #xor s0 and s1, s2 == 6
+6cb0a000 
+
+# 0x0048: xori $s3, $s0, 12  #xor s0 and 12, s3 == 9
+6da1000c 
+
+# 0x004c: slt  $s2, $s1, $s0 #slt s0 and s1, s2 == 1
+7cb0a000 
+
+# 0x0050: slti $s3, $s0, 12  #slt s0 and 12, s3 == 1
+7da1000c 
+
+# 0x0054: slt  $s2, $s0, $s3 #slt s3 and s1, s2 == 0
+7ca0d000 
+
+# 0x0058: slti $s3, $s0, -6  #slt s0 and 12, s3 == 0
+7da1fffa 
+
+# 0x005c: sltu  $s2, $s1, $s0 #sltu s0 and s1, s2 == 1
+8cb0a000 
+
+# 0x0060: sltiu $s3, $s0, 12  #sltu s0 and 12, s3 == 1
+8da1000c 
+
+# 0x0064: sltu  $s2, $s0, $s3 #sltu s3 and s1, s2 == 0
+8ca0d000 
+
+# 0x0068: sltiu $s3, $s0, -3  #sltu s0 and 12, s3 == 0, Yikes
+8da1fffd 

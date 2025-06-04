@@ -1,0 +1,194 @@
+v2.0 raw
+# This is an automatically-generated PIPS machine code file
+
+# 0x0000: nop
+06006000 
+
+# 0x0004: li  $t0, 0xFFF3
+0601fff3 
+
+# 0x0008: li  $t1, 0x0123
+07010123 
+
+# 0x000c: push $t1                # Load t1 onto the stack
+0ee1fffe c7e10000 
+
+# 0x0014: addi $t1, $t1, 500      # Modify t1
+077101f4 
+
+# 0x0018: pop $t1                 # Restore t1 from the stack
+a7e10000 0ee10002 
+
+# 0x0020: sll $t3, $t1, 4         # t3 == 0x1230
+09007404 
+
+# 0x0024: sll $t3, $t0, 4         # t3 == 0xFF30
+09006404 
+
+# 0x0028: srl $t3, $t1, 4         # t3 == 0x0012
+09007804 
+
+# 0x002c: srl $t3, $t0, 4         # t3 == 0x0FFF
+09006804 
+
+# 0x0030: sra $t3, $t1, 4         # t3 == 0x0012
+09007c04 
+
+# 0x0034: sra $t3, $t0, 4         # t3 == 0xFFFF
+09006c04 
+
+# 0x0038: not $t3, $t3            # Set t3 to 0x0000
+59009000 
+
+# 0x003c: not $t3, $t1            # Set t3 to 0xFEDC
+59007000 
+
+# 0x0040: j   HALT
+f001ff00 
+
+# 0x0044: li $t0, 1
+06010001 
+
+# 0x0048: li $t1, 1
+07010001 
+
+# 0x004c: li $t3, 2
+09010002 
+
+# 0x0050: blt! $t0, $t1, fail
+76607000 e6010138 
+
+# 0x0058: li  $t0, 1
+06010001 
+
+# 0x005c: blt! $t3, $t0, fail
+79906000 e9010138 
+
+# 0x0064: li  $t3, 2
+09010002 
+
+# 0x0068: bgt! $t0, $t1, fail
+76706000 e6010138 
+
+# 0x0070: li  $t0, 1
+06010001 
+
+# 0x0074: bgt! $t0, $t3, fail
+76906000 e6010138 
+
+# 0x007c: li  $t0, 1
+06010001 
+
+# 0x0080: bge! $t0, $t3, fail
+76609000 d6010138 
+
+# 0x0088: li  $t0, 1
+06010001 
+
+# 0x008c: ble! $t3, $t0, fail
+79609000 d9010138 
+
+# 0x0094: li  $t3, 2
+09010002 
+
+# 0x0098: blt! $t0, $t3, good1
+76609000 e60100a4 
+
+# 0x00a0: j fail
+f0010138 
+
+# 0x00a4: li  $t0, 1
+06010001 
+
+# 0x00a8: bgt! $t3, $t0, good2
+79609000 e90100b4 
+
+# 0x00b0: j fail
+f0010138 
+
+# 0x00b4: li  $t3, 2
+09010002 
+
+# 0x00b8: ble! $t0, $t1, good3
+76706000 d60100c4 
+
+# 0x00c0: j fail
+f0010138 
+
+# 0x00c4: li  $t0, 1
+06010001 
+
+# 0x00c8: bge! $t0, $t1, good4
+76607000 d60100d4 
+
+# 0x00d0: j fail
+f0010138 
+
+# 0x00d4: li  $t0, 1
+06010001 
+
+# 0x00d8: ble! $t0, $t3, good5
+76906000 d60100e4 
+
+# 0x00e0: j fail
+f0010138 
+
+# 0x00e4: li  $t0, 1
+06010001 
+
+# 0x00e8: bge! $t3, $t1, good6
+79907000 d90100f4 
+
+# 0x00f0: j fail
+f0010138 
+
+# 0x00f4: li  $t3, 420
+090101a4 
+
+# 0x00f8: li  $t0, 0xFFF3
+0601fff3 
+
+# 0x00fc: li  $t1, 0x0123
+07010123 
+
+# 0x0100: push $t1                # Load t1 onto the stack
+0ee1fffe c7e10000 
+
+# 0x0108: addi $t1, $t1, 500      # Modify t1
+077101f4 
+
+# 0x010c: pop $t1                 # Restore t1 from the stack
+a7e10000 0ee10002 
+
+# 0x0114: sll $t3, $t1, 4         # t3 == 0x1230
+09007404 
+
+# 0x0118: sll $t3, $t0, 4         # t3 == 0xFF30
+09006404 
+
+# 0x011c: srl $t3, $t1, 4         # t3 == 0x0012
+09007804 
+
+# 0x0120: srl $t3, $t0, 4         # t3 == 0x0FFF
+09006804 
+
+# 0x0124: sra $t3, $t1, 4         # t3 == 0x0012
+09007c04 
+
+# 0x0128: sra $t3, $t0, 4         # t3 == 0xFFFF
+09006c04 
+
+# 0x012c: not $t3, $t3            # Set t3 to 0x0000
+59009000 
+
+# 0x0130: not $t3, $t1            # Set t3 to 0xFEDC
+59007000 
+
+# 0x0134: j   HALT
+f001ff00 
+
+# 0x0138: li $t3, -1
+0901ffff 
+
+# 0x013c: j HALT
+f001ff00 

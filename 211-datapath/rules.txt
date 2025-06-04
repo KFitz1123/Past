@@ -1,0 +1,105 @@
+import assembler
+import pips
+
+# The instruction decorator tells the assembler to create a new syntax rule for add instructions.
+# The "#" spots indicate operands, which are passed in as parameters to the function below.
+# The second parameter indicates the number of instructions this rule will create (1 in this case)
+@assembler.instruction('add #, #, #', 1)
+def add_instr(dest, operand1, operand2):
+  return pips.rformat(opcode='add', r0=dest, r1=operand1, r2=operand2)
+
+# Encode an addi instruction
+@assembler.instruction('addi #, #, #', 1)
+def addi_instr(dest, op1, immediate):
+  return pips.iformat(opcode='add', r0=dest, r1=op1, imm=immediate)
+  
+# Encode the li pseudoinstruction using an addition to zero
+@assembler.instruction('li #, #', 1)
+def li_instr(dest, immediate):
+  return addi_instr(dest, '$zero', immediate)
+  
+# Encode a subi instruction 
+@assembler.instruction('subi #, #, #', 1)
+def subi_instr(dest, op1, immediate):
+  return pips.iformat(opcode='sub', r0=dest, r1=op1, imm=immediate)
+
+  # Encode an and instruction 
+@assembler.instruction('sub #, #, #', 1)
+def sub_instr(dest, op1, op2):
+  return pips.rformat(opcode='sub', r0=dest, r1=op1, r2=op2)
+  
+# Encode an and instruction 
+@assembler.instruction('and #, #, #', 1)
+def and_instr(dest, op1, op2):
+  return pips.rformat(opcode='and', r0=dest, r1=op1, r2=op2)
+  
+# Encode a andi instruction 
+@assembler.instruction('andi #, #, #', 1)
+def andi_instr(dest, op1, immediate):
+  return pips.iformat(opcode='and', r0=dest, r1=op1, imm=immediate)
+  
+# Encode a or instruction 
+@assembler.instruction('or #, #, #', 1)
+def or_instr(dest, op1, op2):
+  return pips.rformat(opcode='or', r0=dest, r1=op1, r2=op2)
+  
+# Encode a ori instruction 
+@assembler.instruction('ori #, #, #', 1)
+def ori_instr(dest, op1, immediate):
+  return pips.iformat(opcode='or', r0=dest, r1=op1, imm=immediate)
+  
+# Encode a nop instruction 
+@assembler.instruction('nop', 1)
+def nop_instr():
+  return pips.rformat(opcode='add', r0='$t0', r1='$t0', r2='$zero')
+  
+# Encode a nand instruction 
+@assembler.instruction('nand #, #, #', 1)
+def nand_instr(dest, op1, op2):
+  return pips.rformat(opcode='nand', r0=dest, r1=op1, r2=op2)
+  
+# Encode a nandi instruction 
+@assembler.instruction('nandi #, #, #', 1)
+def nandi_instr(dest, op1, immediate):
+  return pips.iformat(opcode='nand', r0=dest, r1=op1, imm=immediate)
+
+# Encode a xor instruction 
+@assembler.instruction('xor #, #, #', 1)
+def xor_instr(dest, op1, op2):
+  return pips.rformat(opcode='xor', r0=dest, r1=op1, r2=op2)
+
+# Encode a xori instruction 
+@assembler.instruction('xori #, #, #', 1)
+def xori_instr(dest, op1, immediate):
+  return pips.iformat(opcode='xor', r0=dest, r1=op1, imm=immediate)
+
+# Encode a slt instruction 
+@assembler.instruction('slt #, #, #', 1)
+def slt_instr(dest, op1, op2):
+  return pips.rformat(opcode='slt', r0=dest, r1=op1, r2=op2)
+
+# Encode a slti instruction 
+@assembler.instruction('slti #, #, #', 1)
+def slti_instr(dest, op1, immediate):
+  return pips.iformat(opcode='slt', r0=dest, r1=op1, imm=immediate)
+  
+# Encode a sltu instruction 
+@assembler.instruction('sltu #, #, #', 1)
+def sltu_instr(dest, op1, op2):
+  return pips.rformat(opcode='sltu', r0=dest, r1=op1, r2=op2)
+  
+# Encode a sltiu instruction 
+@assembler.instruction('sltiu #, #, #', 1)
+def sltiu_instr(dest, op1, immediate):
+  return pips.iformat(opcode='sltu', r0=dest, r1=op1, imm=immediate)
+  
+# Encode a nor instruction 
+@assembler.instruction('nor #, #, #', 1)
+def nor_instr(dest, op1, op2):
+  return pips.rformat(opcode='nor', r0=dest, r1=op1, r2=op2)
+  
+# Encode a nori instruction 
+@assembler.instruction('nori #, #, #', 1)
+def nori_instr(dest, op1, immediate):
+  return pips.iformat(opcode='nor', r0=dest, r1=op1, imm=immediate)
+

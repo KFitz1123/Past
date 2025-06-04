@@ -1,0 +1,53 @@
+v2.0 raw
+# This is an automatically-generated PIPS machine code file
+
+# 0x0000: nop
+06006000 
+
+# 0x0004: li   $s0, TERM       # Address of the terminal output for memory-mapped I/O
+0a01ff10 
+
+# 0x0008: li   $s1, KBD        # Address of the keyboard input for memory-mapped I/O
+0b01ff20 
+
+# 0x000c: li   $sp, STACK_TOP  # Predefined initial stack address
+0e01f800 
+
+# 0x0010: lb  $t0, 0($s1)           # Load a character from the keyboard
+96b10000 
+
+# 0x0014: beq $t0, $zero, loop_top  # If it is the null terminator, start over
+d6010010 
+
+# 0x0018: slti $t1,$t0, 97                # if lowercase, 0
+77610061 
+
+# 0x001c: li   $t2, 122
+0801007a 
+
+# 0x0020: slt  $t2, $t2, $t0              # if lowercase, 0
+78806000 
+
+# 0x0024: or   $t1, $t2, $t1              # if lowercase, 0, otherwise 1
+37807000 
+
+# 0x0028: bne  $t1, $zero, skip           # branch past if it is not lowercase
+e7010030 
+
+# 0x002c: addi $t0, $t0, -32              # make uppercase
+0661ffe0 
+
+# 0x0030: sb  $t0, 0($s0)           # Write the character to the terminal
+b6a10000 
+
+# 0x0034: li  $t1, '\n'             # Load a newline constant
+0701000a 
+
+# 0x0038: beq $t0, $t1, end         # If the character was the newline, stop looping
+d6710040 
+
+# 0x003c: j   loop_top              # Start over
+f0010010 
+
+# 0x0040: j   HALT                  # Enable halt pin and stop the PC incrementing
+f001ff00 
