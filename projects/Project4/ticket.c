@@ -1,0 +1,357 @@
+
+    /***********************************************************************
+     * Name(s)  Kevin Fitzgerald,               *
+     * Ticket Tracker                                                      *
+     *                                                                     *
+     * Assignment for 4/28/2023                                            *
+     ***********************************************************************/
+
+    /* *********************************************************************
+     * Academic honesty certification:                                     *
+     *   Written/online sources used:                                      *
+     *     [include textbook(s), CSC 161 labs or readings;                 *
+     *       complete citations for Web or other written sources           *
+     *      write "none" if no sources used]                               *
+     *   Help obtained                                                     *
+     *     [indicate names of instructor, class mentors                    *
+     *      or evening tutors, consulted according to class policy;        *
+     *      write "none" if none of these sources used]                    *
+     *     ["none" required for Homework Problems                          *
+     *   My/our signature(s) below confirms that the above list of sources *
+     *   is complete AND that I/we have not talked to anyone else          *
+     *   (e.g., CSC 161 students) about the solution to this problem       *
+     *                                                                     *
+     *   Signature:   Kevin Fitzgerald                                     *
+     ***********************************************************************/
+
+
+#include "ticket.h"
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <ctype.h>
+#include <stdbool.h>
+
+int main(void)
+{
+  printf("\nThis program allows you to create problem tickets, label them by company and problem, assign the ticket to someone, label a ticket complete, and view lists of assigned unassigned and completed tickets\n"); /*Introductory message*/
+    
+  ticket_t *newTicketList = NULL;
+  ticket_t *assignedTicketList = NULL;
+  ticket_t *completedTicketList = NULL;
+
+  int ticketIndex = 0;
+
+  bool terminate = false;
+  char input;
+
+  while (!terminate)
+  {
+    printMenu();
+    printf("\nEnter desired option: ");
+   
+    do
+    {
+      input = getc(stdin);
+    } while (input == '\n'); /* requests input until its not a newline */
+
+    fflush(stdin); /* clears stdin buffer */
+   
+      { switch (input)
+    {
+    case '1':
+      newTicket(&newTicketList, &ticketIndex);
+      break;
+
+    case '2':
+      assignTicket(&newTicketList, &assignedTicketList);
+      break;
+
+    case '3':
+      completeTicket(&assignedTicketList, &completedTicketList);
+      break;
+
+    case '4':
+      printf("New Tickets:\n\n");
+      printTickets(newTicketList);
+      break;
+
+    case '5':
+      printf("Assigned Tickets:\n\n");
+      printTickets(assignedTicketList);
+      break;
+
+    case '6':
+      printf("Completed Tickets:\n\n");
+      printTickets(completedTicketList);
+      break;
+
+    case '7':
+      printf("\nExiting, Have a nice day!\n");
+      terminate = true;
+      break;
+
+    default:
+      printf("\nInvalid Option - Try Again!\n");
+      continue;
+    }
+  }
+  }
+
+  return EXIT_SUCCESS;
+} // main
+
+/* => returns void
+  preconditions:
+    - none
+  postconditions:
+    - prints a list of menu options
+*/
+void printMenu(void)
+{
+  printf("\nOptions available:\n");
+  printf("1 - Add a New Ticket\n");
+  printf("2 - Assign a New Ticket\n");
+  printf("3 - Complete an Assigned Ticket\n");
+  printf("4 - Print List of New Tickets\n");
+  printf("5 - Print List of Assigned Tickets\n");
+  printf("6 - Print List of Completed Tickets\n");
+  printf("7 - Quit\n");
+} // printMenu
+
+/* => returns void
+  preconditions:
+    - 'newTicketPtr' needs to be a double pointer to the first
+       ticket_t of new tickets
+    - 'ticketIndex' needs to be a pointer to the ticket index
+       integer
+  postconditions:
+    - queues a new ticket to the 'newTicketList' linked list
+*/
+void newTicket(ticket_t **newTicketPtr, int *ticketIndex)
+{
+  ticket_t *new = (ticket_t *)malloc(sizeof(ticket_t));
+
+  if (new == NULL) /* unable to allocate memory */
+  {
+    perror("Error creating new ticket");
+    return;
+  }
+
+  // ticket_t number
+  new->number = ++(*ticketIndex);
+
+  // ticket_t status
+  strcpy(new->status, "new");
+
+  // ticket_t technician
+  strcpy(new->technician, "unassigned");
+
+  // ticket_t identifier
+  
+  char nlbuff[MAX_LEN]; /* Absorbs buffered newline because fflush doent work */
+  fgets(nlbuff, MAX_LEN, stdin);
+  
+ 
+  printf("Ticket Identifier: ");
+  fgets(new->identifier, MAX_LEN, stdin);
+  new->identifier[strcspn(new->identifier, "\n")] = '\0';
+  fflush(stdin); /* clears stdin buffer */
+
+  // ticket_t problem
+  printf("Problem: ");
+  fgets(new->problem, MAX_LEN, stdin);
+  new->problem[strcspn(new->problem, "\n")] = '\0';
+  fflush(stdin); /* clears stdin buffer */
+
+  // ticket_t next
+  new->next = NULL;
+
+  // updating newTicketList
+  if (*newTicketPtr == NULL) /* no new tickets */
+  {
+    *newTicketPtr = new;
+  }
+  else /* new tickets exist */
+  {
+    ticket_t *tempNewPtr = *newTicketPtr;
+
+    while (tempNewPtr->next != NULL) /* finding last new ticket */
+    {
+      tempNewPtr = tempNewPtr->next;
+    }
+
+    tempNewPtr->next = new;
+  }
+} // newTicket
+
+/* => returns void
+  preconditions:
+    - 'newTicketPtr' needs to be a double pointer to the first
+       ticket_t of new tickets
+    - 'assignedTicketPtr' needs to be a double pointer to the first
+       ticket_t of assigned tickets
+  postconditions:
+    - if 'newTicketList' is empty, returns void
+    - dequeues a new ticket from the 'newTicketList' linked list
+    - queues that ticket to the 'assignedTicketList' linked list
+    - assigns a technician to the ticket from stdin
+    - updates ticket status to assigned
+*/
+void assignTicket(ticket_t **newTicketPtr, ticket_t **assignedTicketPtr)
+{
+  if (*newTicketPtr == NULL) /* no new/unassigned tickets */
+  {
+    printf("There are no new tickets to assign!\n");
+    return;
+  }
+
+  // ticket_t status
+  strcpy((*newTicketPtr)->status, "assigned");
+
+  // ticket_t technician
+  
+  char nlbuff[MAX_LEN]; /* Absorbs buffered newline because fflush doent work */
+  fgets(nlbuff, MAX_LEN, stdin);
+  
+  printf("Assign Ticket to: ");
+  fgets((*newTicketPtr)->technician, MAX_LEN, stdin);
+  (*newTicketPtr)->technician[strcspn((*newTicketPtr)->technician, "\n")] = '\0';
+  fflush(stdin); /* clears stdin buffer */
+
+  // ticket_t next
+  ticket_t *nextNewPtr = (*newTicketPtr)->next; /* saving for assignment later */
+  (*newTicketPtr)->next = NULL;                 /* disconnect ticket from newTicketList */
+
+  // updating assignedTicketList
+  if (*assignedTicketPtr == NULL) /* no assigned tickets */
+  {
+    *assignedTicketPtr = *newTicketPtr;
+  }
+  else /* assigned tickets exist */
+  {
+    ticket_t *tempAssignedPtr = *assignedTicketPtr;
+
+    while (tempAssignedPtr->next != NULL) /* finding last assigned ticket */
+    {
+      tempAssignedPtr = tempAssignedPtr->next;
+    }
+
+    tempAssignedPtr->next = *newTicketPtr;
+  }
+
+  *newTicketPtr = nextNewPtr; /* updating newTicketList*/
+} // assignTicket
+
+/* => returns void
+  preconditions:
+    - 'assignedTicketPtr' needs to be a double pointer to the first
+       ticket_t of assigned tickets
+    - 'completedTicketPtr' needs to be a double pointer to the first
+       ticket_t of completed tickets
+  postconditions:
+    - if 'assignedTicketList' is empty, then returns void
+    - asks the user for a ticket number to complete
+    - if entered ticket number does not exist in 'assignedTicketList',
+      then returns void
+    - removes the ticket with specified 'ticketNumber' from the
+      'assignedTicketList' linked list
+    - queues that ticket to the 'completedTicketList' linked list
+    - updates ticket status to completed
+*/
+void completeTicket(ticket_t **assignedTicketPtr, ticket_t **completedTicketPtr)
+{
+  if (*assignedTicketPtr == NULL) /* no assigned tickets */
+  {
+    printf("There are no assigned tickets to complete!\n");
+    return;
+  }
+
+  // asking which ticket is complete
+  int ticketNumber;
+  printf("Completed Ticket Number: ");
+  while (scanf("%d", &ticketNumber) != 1) /* accounting for input errors */
+  {
+    fflush(stdin); /* clears stdin buffer */
+
+    printf("Please enter an integer!\n\n");
+    printf("Completed Ticket Number: ");
+  }
+
+  // searching ticketNumber in assignedTicketList
+  ticket_t *prevSearchedPtr = NULL;
+  ticket_t *searchedPtr = *assignedTicketPtr;
+
+  while (searchedPtr != NULL && searchedPtr->number != ticketNumber) /* did not find ticketNumber */
+  {
+    prevSearchedPtr = searchedPtr;
+    searchedPtr = searchedPtr->next;
+  }
+
+  if (searchedPtr == NULL) /* ticketNumber does not exist in assignedTicketList */
+  {
+    fprintf(stderr, "Ticket #%d either does not exist or has not been assigned yet\n", ticketNumber);
+    return;
+  }
+
+  // ticket_t status
+  strcpy(searchedPtr->status, "completed");
+
+  // updating assignedTicketList
+  if (prevSearchedPtr == NULL) /* completed ticket is first in assignedTicketList */
+  {
+    *assignedTicketPtr = searchedPtr->next;
+  }
+  else /* need to link previous assigned ticket with next assigned ticket */
+  {
+    prevSearchedPtr->next = searchedPtr->next;
+  }
+
+  searchedPtr->next = NULL; /* disconnect ticket from assignedTicketList */
+
+  // updating completedTicketList
+  if (*completedTicketPtr == NULL) /* no completed tickets */
+  {
+    *completedTicketPtr = searchedPtr;
+  }
+  else /* completed tickets exist */
+  {
+    ticket_t *tempCompletedPtr = *completedTicketPtr;
+
+    while (tempCompletedPtr->next != NULL) /* finding last completed ticket */
+    {
+      tempCompletedPtr = tempCompletedPtr->next;
+    }
+
+    tempCompletedPtr->next = searchedPtr;
+  }
+} // completeTicket
+
+/* => returns void
+  preconditions:
+    - 'ticket' must be a pointer to the first element of a ticket_t
+      linked list
+  postconditions:
+    - prints all tickets (with formatted contents) from the ticket list
+*/
+void printTickets(ticket_t *ticket)
+{
+  if (ticket == NULL) /* no tickets in list */
+  {
+    printf("Ticket list is empty!\n");
+    return;
+  }
+
+  while (ticket != NULL) /* more tickets to display */
+  {
+    printf("+--------------\n");
+    printf("| Ticket #%d (%s)\n", ticket->number, ticket->status);
+    printf("| \n");
+    printf("| Company: %s\n", ticket->identifier);
+    printf("| Problem: %s\n", ticket->problem);
+    printf("| Assigned: %s\n", ticket->technician);
+    printf("+--------------\n\n");
+
+    ticket = ticket->next;
+  }
+} // printTickets

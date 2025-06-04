@@ -1,0 +1,146 @@
+  /***********************************************************************
+     * Name: Kevin Fitzgerald                                                                                   *
+     * Assignment name: Homework  1                                                                     *
+     *                                                                                                                             *
+     * Assignment for  2/17/23                                                                                     *
+     ***********************************************************************/
+
+    /* *********************************************************************
+     * Academic honesty certification:                                     *
+     *   My signature below confirms that the above list of sources        *
+     *   is complete AND that I/we have not talked to anyone else          *
+     *   (e.g., CSC 161 students) about the solution to this problem       *
+     *                  
+     *  none                    
+     *            *
+     *   Signature:             Kevin Fitzgerald                                           *
+     ***********************************************************************/
+
+#include <stdio.h>
+
+/*
+Pre: two numbers which cannot both be 0
+Post: returns an Int
+*/
+int 
+euclids(int1,int2)
+{
+    int Rem = 0;
+while (int>0)
+Rem=int1%int2;
+int2=int1;
+int1=Rem;
+return int2;
+}
+int 
+
+
+main (void)
+{
+    int GCD=0
+    int int1=0;
+    int int2=0;
+printf("input two variables, and this will return the greatest common denominator:");
+scanf(%d,&int1);
+scanf(%d,&int2);
+if (int1==0)&&(int2==0);
+printf("Your Greatest Common Denomenator is: 0");
+else 
+{GCD = euclids (int1,int2);
+printf("Your Greatest Common Denomenator is: %d",GCD)
+}
+return 0;
+}
+/*==========================================
+Test Plan for Greatest Common Denomentor program
+==========================================
+
+The test plan will involve testing valid and expected inputs to determine that the program
+chooses the correct GCD for a selection of values.  It will also
+include testing the edge cases for int1=0 and int2=0
+
+This test will NOT include possible user errors involving completely invalid inputs such
+as non-numeric input nor floating point (i.e. real) numbers since we have not yet
+learned how to recover from those.
+
+****** Testing valid inputs **********
+input: 20, 40
+expected output: 20
+
+input: 13, 27
+expected output: 1
+
+input: 4, 2
+expected output: 2
+
+This tests for all types of situations, including primes
+
+
+****** Testing edge cases *************
+input: 0, 0
+expected output: 0
+
+input: 0 20
+expected output: 0
+
+====================================
+Test Script
+====================================
+Script started on Thu Sep 26 14:47:03 2019
+
+****** Testing valid inputs **********
+bash-3.2$ ./grade
+Example grade conversion program
+^M
+Please enter a numeric value between 0 and 100, as a whole number: 89^M
+B+^M
+bash-3.2$ ./grade^M
+Example grade conversion program^M
+^M
+Please enter a numeric value between 0 and 100, as a whole number: 72^M
+C-^M
+bash-3.2$ ./grade^M
+Example grade conversion program^M
+^M
+Please enter a numeric value between 0 and 100, as a whole number: 95^M
+A^M
+bash-3.2$ ./grade^M
+Example grade conversion program^M
+^M
+
+****** Testing edge cases *************
+
+Please enter a numeric value between 0 and 100, as a whole number: 0^M
+F^M
+^M
+bash-3.2$ ./grade^M
+Example grade conversion program^M
+^M
+Please enter a numeric value between 0 and 100, as a whole number: 100^M
+A+^M
+bash-3.2$ ./grade^M
+Example grade conversion program^M
+^M
+
+****** Testing invalid input *************
+Please enter a numeric value between 0 and 100, as a whole number: -1^M
+I'm sorry, your response was not between 0 and 100.  Please try again.^M
+bash-3.2$ ./grade^M
+Example grade conversion program^M
+^M
+Please enter a numeric value between 0 and 100, as a whole number: 101^M
+I'm sorry, your response was not between 0 and 100.  Please try again.^M
+bash-3.2$ exit^M
+exit^M
+
+Script done on Thu Sep 26 14:48:24 2019
+
+
+==========================================
+Conclusion
+=========================================
+
+The program works as expected on valid input, including edge cases.  It also handles
+expected user input errors when the input is out of range.  
+
+With the exception that it cannot yet handle non-integer input, the program is working*/

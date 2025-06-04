@@ -1,0 +1,170 @@
+
+Test plan for project 4 "Ticket Tracker"
+
+     If Working properly:
+     
+     Output(immediately after running):
+                This program allows you to create problem tickets, labe                         l them by company a       nd problem, assign the ticket to so                   meone, label a ticket complete, and vi        ew lists of assign                ed unassigned and completed tickets
+
+                 Options available:
+                 1 - Add a New Ticket
+                 2 - Assign a New Ticket
+                 3 - Complete an Assigned Ticket
+                 4 - Print List of New Tickets
+                 5 - Print List of Assigned Tickets
+                 6 - Print List of Completed Tickets
+                 7 - Quit
+
+                 Enter desired option:
+     Case: creating a new ticket successfully
+         Input: 1
+         Output: Ticket Identifier:
+         Input: (string less than 50 characters long) e.g. Dave
+         Output: Problem:
+         Input: (string less than 50 characters long) e.g. bad service
+         Output: prints menu
+         Input: 4
+         Output:
+New Tickets:
++--------------
+| Ticket #1 (new)
+| 
+| Company: Dave
+| Problem: bad service
+| Assigned: unassigned
++--------------
+                prints menu
+        Case: adding a second ticket to the first successfully
+             Input: 1
+             Output: Ticket Identifier:
+             Input: (string less than 50 characters long) e.g. Tom
+             Output: Problem:
+             Input: (string less than 50 characters long) e.g. bad service
+             Output: prints menu
+             Input: 4
+             Output:
+New Tickets
++--------------
+| Ticket #1 (new)
+| 
+| Company: Dave
+| Problem: bad service
+| Assigned: unassigned
++--------------
++--------------
+| Ticket #2 (new)
+| 
+| Company: Tom
+| Problem: bad service
+| Assigned: unassigned
++--------------
+                prints menu
+         Case:Assigning a ticket successfully 
+             Input: 2
+             Output: Assign Ticket to:
+             Input: (string less than 50 characters long) e.g. Bill
+             Output: prints menu
+             Input: 4
+             Output:
+New Tickets:
++--------------
+| Ticket #2 (new)
+| 
+| Company: Tom
+| Problem: bad service
+| Assigned: unassigned
++--------------
+                prints menu
+              Input: 5
+Assigned Tickets:
++--------------
+| Ticket #1 (assigned)
+| 
+| Company: Dave
+| Problem: bad service
+| Assigned: Bill
+            prints menu
+            
+         Case:Assigning a second ticket successfully 
+             Input: 2
+             Output: Assign Ticket to:
+             Input: (string less than 50 characters long) e.g. Bill
+             Output: prints menu
+             Input: 4
+             Output:
+Ticket List Empty!
+
+                prints menu
+              Input: 5
+Assigned Tickets:
++--------------
+| Ticket #1 (assigned)
+| 
+| Company: Dave
+| Problem: bad service
+| Assigned: Bill
+          
++--------------
+| Ticket #2 (assigned)
+| 
+| Company: Tom
+| Problem: bad service
+| Assigned: Bill
++--------------
+                prints menu
+                
+        Case:Completing a ticket successfully 
+             Input: 3
+             Output: Completed Ticket Number:
+             Input: (ticket number corresponding to an assigned ticket)
+             e.g. 1
+             Output: prints menu
+             Input: 5
+             Output:
+Assigned Tickets:
++--------------
+| Ticket #2 (Assigned)
+| 
+| Company: Tom
+| Problem: bad service
+| Assigned: Bill
++--------------
+                prints menu
+              Input: 6
+Completed Tickets:
++--------------
+| Ticket #1 (Completed)
+| 
+| Company: Dave
+| Problem: bad service
+| Assigned: Bill
+            prints menu
+            
+         Case:Completing a second ticket successfully 
+            Input: 3
+             Output: Completed Ticket Number:
+             Input: (ticket number corresponding to an assigned ticket)
+             e.g. 2
+             Output: prints menu
+             Input: 5
+             Output: 
+Ticket List Empty!
+
+                prints menu
+              Input: 6
+Assigned Tickets:
++--------------
+| Ticket #1 (Completed)
+| 
+| Company: Dave
+| Problem: bad service
+| Assigned: Bill
+          
++--------------
+| Ticket #2 (Completed)
+| 
+| Company: Tom
+| Problem: bad service
+| Assigned: Bill
++--------------
+                prints menu

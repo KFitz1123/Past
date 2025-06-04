@@ -1,0 +1,29 @@
+Test Plan For Guessnum:
+
+          Edge Cases(for random number generatoed = 85):
+     
+     Test edges by generation 100 random numbers, to see if cases are
+     random within our bounds
+
+     Input:1
+     Output: Incorrect, Guess Higher
+
+     Input: 50
+     Output: Incorrect, Guess Higher
+
+     Input: 100
+     Output: Incorrect, Guess Lower
+
+     Input: 85
+     Output: Congrats! You Guessed Right! You Took 4 Guesses!
+
+     (after 10 Guesses) Input: 76
+     Output: Incorrect, You're out of guesses, the number was 85
+
+             Invalid Numbers
+    
+     Input: -10
+     Output: Incorrect, Guess Higher
+
+     Input: 1000
+     Output: Incorrect, Guess Lower 

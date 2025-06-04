@@ -1,0 +1,115 @@
+#ifndef __FUNC_H__
+#define __FUNC_H__
+#include <stdio.h>
+#include <stdlib.h>
+#include <stdbool.h>
+#include <string.h>
+#include <errno.h>
+
+
+#define MAX_DATASET_SIZE 100 // Maximum dataset size
+#define MAX_DIGITS 50 // maximum number of digits per number in the dataset
+
+struct data {
+  int length;
+  int datarray[MAX_DATASET_SIZE + 1];
+};
+
+/*
+preconditions: requires a pointer to a file which contains interger values separated by a newline character
+postcinditions: retruns an array containing each of the integers contained in the file
+ */
+struct data *   
+store(FILE * data)
+{
+ 
+  struct data * dataset = malloc(sizeof data);
+  int length = 0;
+  int i = 0;
+  char * reset = "clear";
+  char *  temp;
+  int ch = 0;
+  char temparray[MAX_DIGITS + 1];
+  
+  while (temp != NULL)
+      {
+       
+       temp = fgets(temparray, MAX_DIGITS, data);
+       if(temp != NULL){
+      dataset->datarray[i] = atoi(temparray);
+      
+      length++;
+      i++;
+      
+     }
+     } 
+  
+  dataset->length = length;
+;
+  return dataset;
+}// Transfers numbers to an array and records number of datapoints to a struct
+
+
+/*
+preconditions: takes a struct of data as declared above, which contains an array of integers and an interger value of the number of datapoints in the array
+postconditions: prints a table of values for maximum, minimum, median, and mean
+ */
+void
+Datanalysis(struct data * dataset)
+{
+  double mean = 0;
+ int median = 0;
+ int median2 = 0;
+  int max = dataset->datarray[0];
+  int min = dataset->datarray[0];
+  int range = 0;
+
+  for ( int i = 0; i < dataset->length; i++) // calculates Mean
+    {mean = mean + dataset->datarray[i];
+        }
+  mean = mean/dataset->length;
+ 
+  
+  double eventest = dataset->length / 2.0;
+ 
+  if(dataset->length / 2 == eventest) // calculates median or medians
+    {
+      median = dataset->datarray[(dataset->length / 2)-1];
+      median2 = dataset->datarray[(dataset->length / 2)];
+         
+    }
+    else{
+      median = dataset->datarray[(dataset->length/2 - 1)];
+        
+    }
+
+  for (int i = 0; i < dataset->length; i++) // calculates Maximum
+    {
+      if (dataset->datarray[i] > max)
+        {max = dataset->datarray[i];
+        }
+    }
+  
+  
+  for (int i = 0; i < dataset->length; i++) // calculates Minimum
+    {
+      if (dataset->datarray[i] < min)
+        {min = dataset->datarray[i];
+        }
+    }
+  
+  
+  range = max-min;
+
+
+
+  printf(" Statistic: Value:\n Maximum %8d\n Minimum %6d\n Range %10d\n Mean %14.2lf\n", max,min,range,mean);
+  if(median2 == 0){
+    printf(" Median %8d\n",median);}
+  else{
+    printf(" Median %8d, %d\n", median, median2);
+  }
+}
+
+
+#endif

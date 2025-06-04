@@ -1,0 +1,82 @@
+#include <stdio.h>
+#include <MyroC.h>
+
+#define HEIGHT  266
+#define WIDTH  427
+
+/*colorToGray
+ *preconditions: needs a pointer to a picture struct
+ *postconditions: none (diplays a pic)
+ *takes the picture given to it and converts each pixel to a grayscale
+ *version then diplays the new image
+ */
+void
+colorToGray (Picture * pic);
+
+
+
+void
+setPictureMax (Picture * pic);
+
+
+int main(void){
+  printf("This program takes picture with the Scrbblr robots and changes them in various ways\n");
+  rConnect("/dev/rfcomm0");
+  
+  Picture pic = rTakePicture();
+  rDisplayPicture(&pic, 5, "Initial Image");
+
+  colorToGray(&pic);
+
+  Pixel fun[HEIGHT][WIDTH];
+  for(int i = 0; i < HEIGHT; i++){
+    for(int j = 0; j < WIDTH/3; j++){
+      fun[i][j].R = 255;
+      fun[i][j].G = 254;
+      fun[i][j].B = 254;
+    }
+     for(int j = 0; j < WIDTH/3; j++){
+       fun[i][(j + (WIDTH/3))].R = 254;
+       fun[i][(j + (WIDTH/3))].G = 255;
+       fun[i][(j + (WIDTH/3))].B = 254;
+    }
+      for(int j = 0; j < WIDTH/3; j++){
+        fun[i][(j + ((2 * WIDTH)/3))].R = 254;
+        fun[i][(j + ((2 * WIDTH)/3))].G = 254;
+        fun[i][(j + ((2 * WIDTH)/3))].B = 255;
+    }
+  }
+     
+      Picture example_max = {HEIGHT, WIDTH, &fun};
+      rDiplayPicture(&fun, 5, "Example_Max");
+      
+  rDisconnect();
+  return(0);
+}
+
+void
+colorToGray (Picture * pic)
+{
+  printf("This Function converts a picture into a grayscale version of that picture\n");
+  double brightness = 0.0;
+  for(int i = 0; i < HEIGHT; i++){
+    for(int j = 0; j < WIDTH; j++){
+      brightness = (pic->pix_array[i][j].R * 0.30 +
+                    pic->pix_array[i][j].G * 0.59 +
+                    pic->pix_array[i][j].B * 0.11);
+
+      pic->pix_array[i][j].R = brightness;
+      pic->pix_array[i][j].G = brightness;
+      pic->pix_array[i][j].B = brightness;
+        }
+  }
+  rDisplayPicture(pic, 5, "Grayscale Version");
+}
+
+void
+setPictureMax (Picture * pic)
+{
+
+
+}
+ 

@@ -1,0 +1,75 @@
+#ifndef __FUNC_H__
+#define __FUNC_H__
+#include <stdio.h>
+#include <stdlib.h>
+#include <stdbool.h>
+#include <string.h>
+#include <errno.h> 
+
+#define MAX_DATASET_SIZE 1000
+#define MAX_DIGITS 50
+
+struct data {
+  int length;
+  int datarray[MAX_DATASET_SIZE + 1];
+};
+
+
+struct data *   
+store(FILE * data)
+{
+  struct data * dataset = malloc(sizeof data);
+  if(dataset == NULL)
+    {
+      printf("Stupid\n");
+    }
+  int length = 0;
+  int i = 0;
+  char * reset = "clear";
+  char * temp = reset;
+  int ch = 0;
+  char temparray[MAX_DIGITS + 1];
+  
+  printf("Made it past declarations\n");
+  /*
+  while(temp != NULL)
+      {
+        temp = fgets(temparray, MAX_DIGITS, data);
+          printf("%s", temp);
+        length++;
+        i++;
+        }
+    // find number of datapoints in data
+  
+
+  dataset->length = length;
+  temp = reset;
+  i = 0;
+  */
+
+    printf("Made it past length\n");
+  while (temp != NULL)
+    {
+
+      temp = fgets(temparray, MAX_DIGITS, data);
+
+
+      dataset->datarray[i] = atoi(temparray);
+      printf("%d\n", dataset->datarray[i]);
+      length++;
+      i++; }
+  
+  dataset->length = length;
+  printf("Made it to return\n");
+  
+  return dataset;
+  
+
+}
+
+
+
+
+
+
+#endif

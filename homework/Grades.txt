@@ -1,0 +1,36 @@
+Script started on 2023-02-16 20:30:08-06:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="80" LINES="15"]
+[?2004hfitzgera@holberton:homework$ ./grade
+[?2004lbash: ./grade: No such file or directory
+[?2004hfitzgera@holberton:homework$ clang -o  [Kgrades Grades.c
+[?2004l[?2004hfitzgera@holberton:homework$ ./grades
+[?2004lplease input your grade to the nearest whole number (between 0 and 100)
+89
+Your Grade is: B+
+[?2004hfitzgera@holberton:homework$ ./grades
+[?2004lplease input your grade to the nearest whole number (between 0 and 100)
+72
+Your Grade is: C
+[?2004hfitzgera@holberton:homework$ ./grades
+[?2004lplease input your grade to the nearest whole number (between 0 and 100)
+95
+Your Grade is: A+
+[?2004hfitzgera@holberton:homework$ ./grades
+[?2004lplease input your grade to the nearest whole number (between 0 and 100)
+0
+Your Grade is: F
+[?2004hfitzgera@holberton:homework$ ./grades100[K[K[K
+[?2004lplease input your grade to the nearest whole number (between 0 and 100)
+100
+Your Grade is: A+
+[?2004hfitzgera@holberton:homework$ ./grades
+[?2004lplease input your grade to the nearest whole number (between 0 and 100)
+-1
+Your Grade is: F
+[?2004hfitzgera@holberton:homework$ ./grades
+[?2004lplease input your grade to the nearest whole number (between 0 and 100)
+101
+Your Grade is: A+
+[?2004hfitzgera@holberton:homework$ exir[Kt
+[?2004lexit
+
+Script done on 2023-02-16 20:32:26-06:00 [COMMAND_EXIT_CODE="0"]

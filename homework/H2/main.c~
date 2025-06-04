@@ -1,0 +1,51 @@
+#include "func.h"
+#define MAX_LEN 50
+
+
+
+
+
+
+int
+main(int argc, char * argv[MAX_LEN])
+{
+  if (argc != 3)
+    {
+      printf("Please include one input file and one output file when running\n");
+      return 0;
+    }// makes sure that the commandline input is valid
+  printf ("Made it past argc\n");
+  
+  FILE* datafile = fopen (argv[1], "r");// open file
+  fclose(datafile);
+  printf("Made it past fopen\n");
+   
+  if(datafile == NULL)
+    {
+      printf("File could not be opened. Please try again\n");
+      return 0;
+    }// makes sure that the file can be opened
+  
+  printf("Made it past open check\n");
+  
+  struct data * stored = store(datafile);
+
+  for(int i = 0 ; i < stored->length; i++)
+    {
+      printf("%d\n", stored->datarray[i]);
+    }
+  
+  printf("Made it past data stored\n");
+
+
+ if (fclose (datafile))                       /* Close the file stream */
+  {
+    fprintf (stderr, "%s: Error closing file %s: %s\n",
+             argv[0], argv[1], strerror(errno));
+    return EXIT_FAILURE;
+  }
+  free(stored);
+  
+  printf("Made it all the way\n");
+  return 0;
+}

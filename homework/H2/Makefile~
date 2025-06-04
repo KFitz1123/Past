@@ -1,0 +1,6 @@
+main: main.o func.o
+	clang -o main main.o func.o
+
+main.o: main.c func.h
+	clang -c main.c
+

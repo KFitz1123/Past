@@ -1,0 +1,29 @@
+Test Plan for Homework 2:
+
+Error cases:
+
+File in commandline does not exist:
+
+     Output:"File could not be opened. Please Try again"
+
+Too many or too few files in commandline:
+
+    Output: "please include one input file when running. Try again"
+
+
+Successful case:
+
+prints introductory message
+opens file
+transfers data to an array
+prints a table containing maximum, minimum, range, median, and mean with
+labels for each
+E.G
+maximum    8
+minimum    1
+range      7
+median     5
+mean       4.5
+closes file
+frees structs
+prints closing message

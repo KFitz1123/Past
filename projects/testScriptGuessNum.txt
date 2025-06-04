@@ -1,0 +1,48 @@
+Script started on 2023-02-27 11:02:00-06:00 [TERM="xterm-256color" TTY="/dev/pts/2" COLUMNS="80" LINES="24"]
+[?2004hfitzgera@motwani:projects$ e[K./ran[K[K[K[K[Ktime ./max3clang -o max3 max3.c[9Ptime ./max3clang -o max3 max3.c[9Ptime ./max3clang -o max3 max3.c[9Ptime ./max3clang -o max3 max3.c[9Ptime ./max3clang -o max3 max3.c[9Ptime ./max3[K[K[K[K[K[K[K[K[K[K[K./rand
+[?2004lActual number: 45
+Enter your first guess between 1 and 100 (inclusive)
+50
+Incorrect, Guess Lower!
+25
+Incorrect, Guess Higher!
+1
+Incorrect, Guess Higher!
+-5  100
+Incorrect, Guess Lower!
+200
+Invalid Input, Please Enter Again!
+-10
+Invalid Input, Please Enter Again!
+45
+Congrats, You Guessed the Number Correctly!
+[?2004hfitzgera@motwani:projects$ ./rand
+[?2004lActual number: 22
+Enter your first guess between 1 and 100 (inclusive)
+0
+Invalid Input, Please Enter Again!
+100
+Incorrect, Guess Lower!
+1
+Incorrect, Guess Higher!
+101
+Invalid Input, Please Enter Again!
+3
+Incorrect, Guess Higher!
+4
+Incorrect, Guess Higher!
+88
+Incorrect, Guess Lower!
+66
+Incorrect, Guess Lower!
+32
+Incorrect, Guess Lower!
+98
+Incorrect, Guess Lower!
+87
+Incorrect, Guess Lower!
+You are Out of Guesses! The number was 22
+[?2004hfitzgera@motwani:projects$ exit
+[?2004lexit
+
+Script done on 2023-02-27 11:04:33-06:00 [COMMAND_EXIT_CODE="0"]

@@ -1,0 +1,27 @@
+Script started on 2023-02-16 21:02:55-06:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="80" LINES="37"]
+[?2004hfitzgera@holberton:homework$ exit./grades[4Pexit[K./gcd
+[?2004linput two variables, and this will return the greatest common denominator:
+20 40
+Your Greatest Common Denomenator is: 20 
+[?2004hfitzgera@holberton:homework$ ./gcd
+[?2004linput two variables, and this will return the greatest common denominator:
+13 27
+Your Greatest Common Denomenator is: 1 
+[?2004hfitzgera@holberton:homework$ 4 2
+[?2004lbash: 4: command not found
+[?2004hfitzgera@holberton:homework$ 4 2./gcd
+[?2004linput two variables, and this will return the greatest common denominator:
+4 2
+Your Greatest Common Denomenator is: 2 
+[?2004hfitzgera@holberton:homework$ ./gcd[2P4 2./gcd
+[?2004linput two variables, and this will return the greatest common denominator:
+0 0
+Your Greatest Common Denomenator is: 0
+[?2004hfitzgera@holberton:homework$ ./gcd
+[?2004linput two variables, and this will return the greatest common denominator:
+0 20
+Your Greatest Common Denomenator is: 0
+[?2004hfitzgera@holberton:homework$ exit
+[?2004lexit
+
+Script done on 2023-02-16 21:04:18-06:00 [COMMAND_EXIT_CODE="0"]

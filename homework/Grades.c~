@@ -1,0 +1,161 @@
+  /***********************************************************************
+     * Name: Kevin Fitzgerald                                                                                   *
+     * Assignment name: Homework  1                                                                     *
+     *                                                                                                                             *
+     * Assignment for  2/17/23                                                                                     *
+     ***********************************************************************/
+
+    /* *********************************************************************
+     * Academic honesty certification:                                     *
+     *   My signature below confirms that the above list of sources        *
+     *   is complete AND that I/we have not talked to anyone else          *
+     *   (e.g., CSC 161 students) about the solution to this problem       *
+     *                  
+     *  none                    
+     *            *
+     *   Signature:             Kevin Fitzgerald                                           *
+     ***********************************************************************/
+
+#include <stdio.h>
+
+int 
+main (void)
+{
+int grade=0;
+
+printf("please input your grade to the nearest whole number (between 0 and 100)\n");
+scanf(%d,&grade);
+if (grade<0)
+grade=0
+if (grade>100)
+grade=100
+int letter=grade/10;
+int plus=grade%10;
+printf("Your Grade is: ");
+if(letter<6)
+	printf("F\n"); // if grade is below 60% it is an F
+else if (letter == 10)
+	printf("A+\n"); // if grade is 100%, it is an A+
+else {switch (letter)
+{
+  case 6: printf("D")
+    break;
+  case 7:printf("C")
+    break;
+  case 8:printf("B")
+    break;
+case 9:printf("A")
+    break;
+  default:
+  printf("please input valid score")
+    break;
+}
+if (0<=letter)&&(letter<=2)
+  printf("-\n"); //if second digit is from 0 to 2, add a -
+else if(letterer>=8)
+printf("+\n") //if second digit is either 8 or 9, add a +
+else printf("\n");
+}
+return 0;
+}
+/*==========================================
+Test Plan for Grade Translation program
+==========================================
+
+The test plan will involve testing valid and expected inputs to determine that the program
+chooses the correct letter grade and modifier for a selection of values.  It will also
+include testing the edge cases for the interval 0 <= n <= 100 and testing values 
+beyond the interval.
+
+This test will NOT include possible user errors involving completely invalid inputs such
+as non-numeric input nor floating point (i.e. real) numbers since we have not yet
+learned how to recover from those.
+
+****** Testing valid inputs **********
+input: 89
+expected output: B+
+
+input: 72
+expected output: C-
+
+input: 95
+expected output: A
+
+This tests three of five letter grades and all of the modifiers
+
+
+****** Testing edge cases *************
+input: 0
+expected output: F
+
+input: 100
+expected output: A+
+
+****** Testing invalid input *************
+input: -1
+expected output: F
+
+input: 101
+expected output: A+ 
+
+====================================
+Test Script
+====================================
+Script started on Thu Sep 26 14:47:03 2019
+
+****** Testing valid inputs **********
+bash-3.2$ ./grade
+Example grade conversion program
+^M
+Please enter a numeric value between 0 and 100, as a whole number: 89^M
+B+^M
+bash-3.2$ ./grade^M
+Example grade conversion program^M
+^M
+Please enter a numeric value between 0 and 100, as a whole number: 72^M
+C-^M
+bash-3.2$ ./grade^M
+Example grade conversion program^M
+^M
+Please enter a numeric value between 0 and 100, as a whole number: 95^M
+A^M
+bash-3.2$ ./grade^M
+Example grade conversion program^M
+^M
+
+****** Testing edge cases *************
+
+Please enter a numeric value between 0 and 100, as a whole number: 0^M
+F^M
+^M
+bash-3.2$ ./grade^M
+Example grade conversion program^M
+^M
+Please enter a numeric value between 0 and 100, as a whole number: 100^M
+A+^M
+bash-3.2$ ./grade^M
+Example grade conversion program^M
+^M
+
+****** Testing invalid input *************
+Please enter a numeric value between 0 and 100, as a whole number: -1^M
+I'm sorry, your response was not between 0 and 100.  Please try again.^M
+bash-3.2$ ./grade^M
+Example grade conversion program^M
+^M
+Please enter a numeric value between 0 and 100, as a whole number: 101^M
+I'm sorry, your response was not between 0 and 100.  Please try again.^M
+bash-3.2$ exit^M
+exit^M
+
+Script done on Thu Sep 26 14:48:24 2019
+
+
+==========================================
+Conclusion
+=========================================
+
+The program works as expected on valid input, including edge cases.  It also handles
+expected user input errors when the input is out of range.  
+
+With the exception that it cannot yet handle non-integer input, the program is working*/

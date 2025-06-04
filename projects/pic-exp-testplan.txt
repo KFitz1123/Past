@@ -1,0 +1,46 @@
+
+Test plan for pic-experiments
+
+
+Function: colorToGray
+
+     Input: picture taken by the robot
+     Output: picture with all colors turned to grayscale displayed for 5
+     seconds
+
+     plan:
+     1. connect to robot
+     2. take a picture
+     3. display the picture
+     4. describe purpose of the function
+     5. display picture in grayscale along with description
+
+Function: setPictureMax
+
+     input: picture cosisting of colors which consist of one value 255 and
+     two values 254
+     output: same picture with each RGB value reduced to only the 255 value
+     on each pixel
+
+
+     plan:
+     1. display initial picture
+     2. introduce the function
+     3. describe purpose of function
+     4. display the altered picture
+
+Test plan for flip-picture
+
+Function:flip-picture
+
+        input: picture from robot
+        output: same picture inverted about the horizontal midline
+
+
+        plan:
+        1.connect to robot
+        2.take picture with robot
+        3.display original photo
+        4.describe purpose of function
+        5. display flipped photo
+        

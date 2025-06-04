@@ -1,0 +1,30 @@
+Script started on 2023-05-12 21:12:15-05:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="115" LINES="24"]
+[?2004hfitzgera@motwani:H2$ ./main Dataset.txt Destination.txt[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cmake main[K
+[?2004lclang -c main.c
+clang -o main main.o 
+[?2004hfitzgera@motwani:H2$ make main./main Dataset.txt Destination.txt[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K
+[?2004lthis program tells you some statistical information about the data ontained in the input file
+ File must be integers with a new line between each datapoint
+ Statistic: Value:
+ Maximum     5097
+ Minimum      1
+ Range       5096
+ Mean        1190.20
+ Median       23
+task successful. Have a nice day
+[?2004hfitzgera@motwani:H2$ ./main Dataset.txt[K[K[K[K
+[?2004lthis program tells you some statistical information about the data ontained in the input file
+ File must be integers with a new line between each datapoint
+File could not be opened. Please try again
+[?2004hfitzgera@motwani:H2$ ./main Dataset.txt[9Pmake main./main Dataset.txt Destination.txt
+[?2004lthis program tells you some statistical information about the data ontained in the input file
+ File must be integers with a new line between each datapoint
+Please include one input file  when running. Try again
+[?2004hfitzgera@motwani:H2$ ./main Dataset.txt Destination.txt[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K
+[?2004lthis program tells you some statistical information about the data ontained in the input file
+ File must be integers with a new line between each datapoint
+Please include one input file  when running. Try again
+[?2004hfitzgera@motwani:H2$ exit
+[?2004lexit
+
+Script done on 2023-05-12 21:13:37-05:00 [COMMAND_EXIT_CODE="0"]

@@ -1,0 +1,48 @@
+Test Plan For Guessnum:
+     
+We first test the bounds of the random function by generating 100 random
+numbers. We then check if there is a sufficient variety and if the maximum
+and minimum numbers, i.e, 1 and 100, are included.
+
+    Random Number: 85
+
+    Edge Cases:
+     Input:1
+     Output: Incorrect, Guess Higher
+
+     Input: 100
+     Output: Incorrect, Guess Lower
+
+     Guess is greater than Random Number:
+     Input: 90
+     Output: Incorrect, Guess Lower
+
+     Input: 93
+     Output: Incorrect, Guess Lower
+
+     Guess is lower than Random Number:
+     Input: 15
+     Output: Incorrect, Guess Higher
+
+     Input: 30
+     Output: Incorrect, Guess Higher
+
+     Out of Bounds Guesses:
+   
+      Input: -10
+     Output: Incorrect, Please Guess Again
+
+     Input: 1000
+     Output: Incorrect, Please Guess Again
+
+     Correct Guess:
+
+     Input: 85
+     Output: Congrats! You Guessed Right! You Took 4 Guesses!
+
+     after 10 Guesses:
+     Input: 76
+     Output: Incorrect, You're out of guesses, the number was 85
+
+
+    
